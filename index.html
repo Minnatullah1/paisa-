@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paisa — Expense Tracker</title>
+<meta name="description" content="Track daily expenses, see where your money goes, and export to CSV. Data stays in your browser.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>₹</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header class="top">
+    <h1>Paisa</h1>
+    <div class="controls">
+      <label class="sr" for="month">Period</label>
+      <select id="month"></select>
+      <button id="export" type="button" class="ghost">Export CSV</button>
+    </div>
+  </header>
+
+  <section class="hero" aria-live="polite">
+    <p class="label" id="periodLabel">This month</p>
+    <p class="total" id="total">₹0</p>
+    <div class="bar" id="bar" role="img" aria-label="Spending split by category"></div>
+    <ul class="legend" id="legend"></ul>
+  </section>
+
+  <div class="grid">
+    <form id="form" class="panel" autocomplete="off">
+      <h2>Add expense</h2>
+      <label>What for
+        <input id="title" required maxlength="60" placeholder="Lunch, auto fare, recharge">
+      </label>
+      <div class="row">
+        <label>Amount (₹)
+          <input id="amount" type="number" min="1" step="0.01" required inputmode="decimal" placeholder="250">
+        </label>
+        <label>Date
+          <input id="date" type="date" required>
+        </label>
+      </div>
+      <label>Category
+        <select id="category"></select>
+      </label>
+      <button type="submit">Add expense</button>
+    </form>
+
+    <section class="panel">
+      <h2>Expenses</h2>
+      <ul id="list" class="list"></ul>
+      <p id="empty" class="empty" hidden>No expenses here yet. Add your first one on the left.</p>
+    </section>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
